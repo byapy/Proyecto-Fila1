@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Prueba Moderno</title>
+    <!-- Fuente moderna de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reseteo básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Fondo general de la página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Degradado de fondo vibrante */
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Elementos decorativos de fondo (Burbujas flotantes estilo glassmorphism) */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 250px;
+            height: 250px;
+            bottom: -50px;
+            right: -80px;
+            animation-delay: 2s;
+        }
+
+        /* Animación para que las burbujas floten */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Contenedor del formulario usando Glassmorphism (Efecto de cristal) */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 420px;
+            z-index: 10;
+            /* Para que esté por encima de las burbujas */
+        }
+
+        .form-container h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Grupo de inputs (para los labels animados) */
+        .input-group {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 5px;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            outline: none;
+            background: transparent;
+            transition: border-color 0.3s;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            padding: 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            transition: 0.3s ease all;
+        }
+
+        /* Efectos cuando el input está enfocado o tiene texto válido */
+        .input-group input:focus,
+        .input-group input:valid {
+            border-bottom-color: #00f2fe;
+        }
+
+        /* Movimiento del label hacia arriba (Floating Label) */
+        .input-group input:focus~label,
+        .input-group input:valid~label {
+            top: -20px;
+            font-size: 12px;
+            color: #00f2fe;
+            font-weight: 500;
+        }
+
+        /* Botón de enviar estilizado */
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Texto inferior */
+        .footer-text {
+            text-align: center;
+            margin-top: 25px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .footer-text a {
+            color: #00f2fe;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-text a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Figuras decorativas de fondo -->
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+
+    <!-- Contenedor del Formulario -->
+    <div class="form-container">
+        <h2>Crear Cuenta</h2>
+
+        <!-- Formulario (Se previene el envío real para que sirva de prueba) -->
+        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('¡Formulario enviado con éxito!');">
+
+            <div class="input-group">
+                <input type="text" id="nombre" required>
+                <label for="nombre">Nombre completo</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="correo" required>
+                <label for="correo">Correo electrónico</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" required>
+                <label for="password">Contraseña</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Registrarse</button>
+
+            <p class="footer-text">¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+        </form>
+    </div>
+
+</body>
+
+</html>
